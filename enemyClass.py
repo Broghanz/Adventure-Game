@@ -1,7 +1,7 @@
 import random
 import time
 
-player_health = 200
+player_health = 5
 
 class Enemy:
 
@@ -13,20 +13,19 @@ class Enemy:
 
     def attack_enemy(self):
         time.sleep(1)
-        print ("what move would you like to make? (Stab, Maim, Smack?")
+        print ("what move would you like to make? (Stab or Smack?")
         print("")
-        answer = input()
-
+        answer = input.lower()
         if answer == "stab":
-            self.health = self.health -     (random.randint(1,100)/(random.uniform(0,1)*     self.defense))
+            if Sword == True:
+                self.health = self.health -     (random.randint(1,3)/(random.uniform(0,1)*     self.defense))
+                self.health = int(self.health)
+            else:
+                print("You cannot stab with a sword you do not have..")
+        elif answer == "smack":
+            self.health = self.health -   (random.randint(1,3)/(random.uniform(0,1)* self.defense))
             self.health = int(self.health)
-        elif answer == "maim":
-            self.health = self.health - (random.randint(1,100)/(random.uniform(0,1)* self.defense))
-            self.health = int(self.health)
-        elif answer == "Smack":
-            self.health = self.health -   (random.randint(1,100)/(random.uniform(0,1)* self.defense))
-            self.health = int(self.health)
-            
+
         else:
             print("you stumble...")
 
@@ -42,7 +41,7 @@ class Enemy:
         time.sleep(1)
         print ("The enemy " + self.name + " " + "attacks...")
         print("")
-        player_health = player_health - (self.strength * random.uniform(0.1, 1.4))
+        player_health = player_health - (self.strength * random.uniform(0.1, 1.4))1:41 PM 5/1/2019
         player_health = int(player_health)
         time.sleep(1)
         print ("Your health is now " + str(int(player_health)))
@@ -70,6 +69,6 @@ class Enemy:
             print ("Sorry, you died")
 
 
-enemies = [Enemy("Bear", 10, 10, 100), Enemy("Tigers", 10, 10, 100), Enemy("Lion", 10, 10, 100)]
-random_enemy = random.choice(enemies) 
+enemies = [Enemy("Boss", 5, 5, 5), Enemy("Tiger", 3, 3, 3), Enemy("Lion", 3, 3, 3)]
+random_enemy = random.choice(enemies)
 random_enemy.battle_script()
